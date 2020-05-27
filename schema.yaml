@@ -7,7 +7,7 @@ locale: "en"
 groupings:
   - title: "General Configuration"
     visible: false
-    variables:cd config
+    variables:
       - compartment_ocid
 
 variables:
