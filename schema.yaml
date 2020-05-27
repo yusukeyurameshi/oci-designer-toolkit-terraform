@@ -1,0 +1,55 @@
+title: "Oracle Designer Toolkit Terraform"
+description: "A terraform script to deploy Oracle Designer Toolkit using Resource Manager and Freetier resources"
+schemaVersion: 0.0.1
+version: "20200527"
+locale: "en"
+
+groupings:
+  - title: "General Configuration"
+    visible: false
+    variables:
+      - compartment_ocid
+      - ssh_public_key
+
+variables:
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    # type: string
+    required: true
+    title: "Compartment"
+    description: "The compartment in which to create compute instance"
+
+  ssh_public_key:
+    type: string
+    required: true
+    title: "SSH Public Key"
+    description: "The public SSH key for the key-pair that you want to use, if you wish to login to the instances over SSH"
+
+
+outputGroups:
+  - title: "Okit App details"
+    outputs:
+      - ${lb_public_url}
+      - ${autonomous_database_password}
+      - ${dev}
+      - ${comments}
+
+outputs:
+  lb_public_url:
+    type: link
+    title: Open
+    visible: true
+
+  dev:
+    type: string
+    title: "Message"
+    displayText: "Made with \u2764 by Fabio Silva"
+    visible: true
+
+  comments:
+    type: string
+    title: "Comments"
+    displayText: "The application URL will be unavailable for a few minutes after provisioning, while the application is configured"
+    visible: true
+
+primaryOutputButton: ${lb_public_url}
