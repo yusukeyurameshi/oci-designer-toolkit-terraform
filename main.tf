@@ -33,41 +33,34 @@ resource "oci_core_security_list" "security_list" {
   compartment_id = var.compartment_ocid
   vcn_id         = oci_core_vcn.virtual_network.id
 
-  egress_security_rules = [{
+  egress_security_rules {
     protocol    = "All"
     destination = "0.0.0.0/0"
-  }]
+  }
 
-  ingress_security_rules = [{
-    protocol = "All"
-    source   = "10.0.0.0/24"
-  },
-    {
-      protocol = "6"
+  ingress_security_rules {
+    protocol = "6"
+    source = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    stateless   = "false"
 
-      source      = "0.0.0.0/0"
-      source_type = "CIDR_BLOCK"
-      stateless   = "false"
-
-      tcp_options {
-    max = "80"
-    min = "80"
-
+    tcp_options {
+      max = 22
+      min = 22
     }
-    },
-    {
-      protocol = "6"
+  }
 
-      source      = "0.0.0.0/0"
-      source_type = "CIDR_BLOCK"
-      stateless   = "false"
+  ingress_security_rules {
+    protocol = "6"
+    source = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    stateless   = "false"
 
-      tcp_options {
-    max = "22"
-    min = "22"
-
+    tcp_options {
+      max = 80
+      min = 80
     }
-    }]
+  }
 
 }
 

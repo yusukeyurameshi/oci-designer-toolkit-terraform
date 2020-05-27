@@ -7,13 +7,13 @@ variable "compartment_ocid" {}
 variable "region" {}
 
 # Key used to SSH to OCI VMs
-variable "ssh_public_key" {}
+variable "ssh_public_key" {default = ""}
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Optional variables
 # The defaults here will give you a cluster.  You can also modify these.
 # ---------------------------------------------------------------------------------------------------------------------
-variable instance_shape { default = "VM.StandardE2.1.Micro"}
+variable instance_shape {default = "VM.Standard.E2.1.Micro"}
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Constants
@@ -23,7 +23,7 @@ variable instance_shape { default = "VM.StandardE2.1.Micro"}
 # https://docs.cloud.oracle.com/en-us/iaas/images/image/54f930a3-0bf3-4f5d-b573-10eeeb7c7b03/
 # Oracle-Linux-7.7-2020.03.23-0
 variable "images" {
-  type = "map"
+  type = map
 
   default = {
     ap-melbourne-1 = "ocid1.image.oc1.ap-melbourne-1.aaaaaaaakh4vq4fswqw7ftjiix7qbdzdrvhyq44upcgm66nbfcefg6miwosa"
