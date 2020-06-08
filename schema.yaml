@@ -1,8 +1,9 @@
 title: "Oracle Designer Toolkit Terraform"
 description: "A terraform script to deploy Oracle Designer Toolkit using Resource Manager and Freetier resources"
-schemaVersion: 1.0.1
-version: "20200527"
+schemaVersion: 1.0.2
+version: "20200608"
 locale: "en"
+#modified shape to E2.1 (testing purposes)
 
 groupings:
   - title: "General Configuration"

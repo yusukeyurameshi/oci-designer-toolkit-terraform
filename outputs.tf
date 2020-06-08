@@ -1,9 +1,9 @@
 output "Okit_url" {
-  value = "${join("",["http://", oci_core_instance.okit-inst.public_ip,"/okit/designer"])}"
+  value = join("",["http://", oci_core_instance.okit-inst.public_ip,"/okit/designer"])
 }
 
 output "Okit_url2" {
-  value = "${join("",["http://", oci_core_instance.okit-inst.public_ip,"/okit/designer"])}"
+  value = join("",["http://", oci_core_instance.okit-inst.public_ip,"/okit/designer"])
 }
 
 output "dev" {

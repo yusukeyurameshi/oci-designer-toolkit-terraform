@@ -2,10 +2,10 @@ resource "oci_core_instance" "okit-inst" {
   display_name        = "Oracle Designer Toolkit"
   compartment_id      = var.compartment_ocid
   availability_domain = lookup(data.oci_identity_availability_domains.availability_domains.availability_domains[0],"name")
-  shape               = var.instance_shape
+  shape               = var.Instance_shape
 
   source_details {
-    source_id   = var.images[var.region]
+    source_id   = lookup(data.oci_core_images.OLImageOCID.images[0], "id")
     source_type = "image"
   }
 
