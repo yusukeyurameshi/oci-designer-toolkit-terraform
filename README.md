@@ -15,5 +15,5 @@ If you would like to follow all Okit deployment process, just access connect to 
 
 ````
 sudo su -
-tail -20000 /var/log/messages | grep cloud-init
+tail -20000f /var/log/messages | grep cloud-init
 ````
