@@ -12,3 +12,12 @@ data "oci_core_images" "OLImageOCID" {
   }
 
 }
+
+resource random_id okit_id {
+  byte_length = 2
+}
+
+data oci_core_instances instances{
+  compartment_id = var.compartment_ocid
+  availability_domain = lookup(data.oci_identity_availability_domains.availability_domains.availability_domains[0],"name")
+}

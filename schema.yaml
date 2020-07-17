@@ -1,15 +1,29 @@
 title: "Oracle Designer Toolkit Terraform"
 description: "A terraform script to deploy Oracle Designer Toolkit using Resource Manager and Freetier resources"
-schemaVersion: 1.0.2
-version: "20200608"
+schemaVersion: 1.0.3
+version: "20200609"
 locale: "en"
-#modified shape to E2.1 (testing purposes)
 
 groupings:
   - title: "General Configuration"
     visible: false
     variables:
+      - region
       - compartment_ocid
+      - Instance_shape
+      - Instance_shape_free
+
+  - title: "Required Configuration"
+    visible: true
+    variables:
+      - ssh_public_key
+
+  - title: "Optional Configuration"
+    visible: true
+    variables:
+      - free_tier_resources
+      - InstanceOS
+      - InstanceOSVersion
 
 variables:
   compartment_ocid:
@@ -18,6 +32,40 @@ variables:
     required: true
     title: "Compartment"
     description: "The compartment in which to create compute instance"
+
+  ssh_public_key:
+    type: string
+    # type: string
+    required: true
+    title: "Public SSH key"
+    description: "Public SSH key open format"
+
+  free_tier_resources:
+    type: boolean
+    # type: string
+    required: false
+    title: "Free Tier Resources"
+    description: "True or False"
+
+  Instance_shape:
+    type: string
+    required: false
+    title: "Instance Shape"
+
+  Instance_shape_free:
+    type: string
+    required: false
+    title: "Instance Shape Free"
+
+  InstanceOS:
+    type: string
+    required: false
+    title: "Instance OS"
+
+  InstanceOSVersion:
+    type: string
+    required: false
+    title: "Instance OS Version"
 
 outputGroups:
   - title: "Okit App details"
