@@ -14,7 +14,11 @@ yum install -y git
 
 git clone https://github.com/oracle/oci-designer-toolkit.git
 
-cd oci-designer-toolkit
+
+cd oci-designer-toolkit/containers/docker
+docker-compose up
+
+cd ../../
 docker build --tag okit --file ./containers/docker/Dockerfile --force-rm ..
 
 
